@@ -37,7 +37,7 @@ public:
 
     void Showresult()
     {
-        cout << "Addtion of complex number is : " << "(x,y) = " << "(" << x << "," << y << ")" << endl;
+        cout <<"(x,y) = " << "(" << x << "," << y << ")" << endl;
     }
 };
 
@@ -51,11 +51,13 @@ int main()
 
     // Complex number addtion
     C3 = C1 + C2;
+    cout << "Addtion of complex number : ";
     C3.Showresult();
     History.push(Complex(C3));
 
     // Complex number substraction
     C4 = C2 - C1; 
+    cout << "Substraction of complex number : ";
     C4.Showresult();
     History.push(Complex(C4));
     return 0;
