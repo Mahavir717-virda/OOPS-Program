@@ -1,52 +1,52 @@
 #include <iostream>
 #include <cstring>
-#include <sstream>
 using namespace std;
 
 int main()
 {
-
     char word[1000];
-    char WORD[1000];
     cout << "Enter string : ";
     cin.getline(word, 1000);
 
     for (int i = 0; i < word[i] != '\0'; i++)
     {
-        WORD[i] = tolower(word[i]);
+        word[i] = tolower(word[i]);
     }
 
-    char *token = strtok(WORD, " ");
+    char *token = strtok(word, " ");
     int wordcount = 0;
     char Word[100][20];
-    
+
     while (token != NULL)
     {
         strcpy(Word[wordcount], token);
         wordcount++;
         token = strtok(NULL, " ");
     }
-    int count = 1;
+    int count[100] = {0};
     for (int i = 0; i < wordcount; i++)
     {
-        for (int j = i + 1; j < wordcount; j++)
+        if (count[i] == 0)
         {
-            if (strcmp(Word[i], Word[j]) == 0)
+            count[i] = 1;
+            for (int j = i + 1; j < wordcount; j++)
             {
-                count++;
-            }
-            else
-            {
-
+                if (strcmp(Word[i], Word[j]) == 0)
+                {
+                    count[i]++;
+                    count[j] = -1;
+                }
             }
         }
     }
-
     cout << "frequency of the words are : " << endl;
 
     for (int i = 0; i < wordcount; i++)
     {
-        cout << Word[i] << " -> " << count << endl;
+        if (count[i] > 0)
+        {
+            cout << Word[i] << " -> " << count[i] << endl;
+        }
     }
     return 0;
 }
